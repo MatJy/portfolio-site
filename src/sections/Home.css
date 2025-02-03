@@ -1,0 +1,10 @@
+.neon-glow {
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 0 10px #00b894, 0 0 10px #00b894, 0 0 20px #00cec9; /* Steam-like neon glow */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.neon-glow:hover {
+    box-shadow: 0 0 20px #00b894, 0 0 20px #00b894, 0 0 30px #00cec9; /* Stronger glow on hover */
+}
