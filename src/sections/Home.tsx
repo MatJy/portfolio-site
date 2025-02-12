@@ -1,7 +1,10 @@
 import './Home.css';
 import '../index.css';
+import useProjects from '../hooks/useProjects';
 
 const Home = () => {
+    const { projects } = useProjects();
+
     return (
         <section className="p-0 pb-0 text-left text-white w-full">
             <meta
@@ -32,7 +35,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="bg-[#1B1820] pl-2">
-                            <p>5 projects done</p>
+                            <p>{projects.length} projects done</p>
                         </div>
                     </div>
                 </div>
@@ -63,7 +66,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="bg-[#1B1820] pl-2">
-                        <p>5 projects done</p>
+                        <p>{projects.length} projects done</p>
                     </div>
                 </div>
             </div>
