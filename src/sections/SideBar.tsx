@@ -10,12 +10,12 @@ const SideBar = () => {
                 <p className="text-green-500 text-2xl">Currently In-Studying</p>
                 <p className="text-green-500 text-lg">Full Stack</p>
                 <br />
-                <button
-                    className="hover:underline "
+                <a
+                    className="hover:underline cursor-pointer "
                     onClick={() => navigate('/projects')}
                 >
                     All projects
-                </button>
+                </a>
             </div>
         </section>
     );
