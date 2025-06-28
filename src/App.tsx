@@ -1,15 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './sections/Home';
-import './App.css';
 import Badges from './sections/Badges';
 import InfoBox from './sections/InfoBox';
 import Projects from './sections/Projects';
 import SideBar from './sections/SideBar';
+import ProjectsPage from './sections/ProjectsPage';
+import './App.css';
 import './index.css';
 
-const App: React.FC = () => {
+const MainPage: React.FC = () => {
     return (
-        <div>
+        <div
+            style={{
+                backgroundImage: "url('/lightblue.jpg')",
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundAttachment: 'fixed',
+            }}
+        >
             <div className="vertical-line ">
                 <section className="content">
                     <div>
@@ -39,6 +49,17 @@ const App: React.FC = () => {
                 </section>
             </div>
         </div>
+    );
+};
+
+const App: React.FC = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+            </Routes>
+        </Router>
     );
 };
 

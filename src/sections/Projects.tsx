@@ -19,13 +19,13 @@ const Projects = () => {
             <p className="bg-[#2B3244] p-2 rounded-t-sm text-2xl">
                 Recent Activity
             </p>
-            {projects.map((project) => (
+            {projects.slice(0, 3).map((project) => (
                 <div
                     key={project.name}
                     className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm "
                 >
                     <a
-                        className="text-2xl xxl:text-4xl p-2 hover:text-[#5DAEDE]"
+                        className="text-2xl xxl:text-2xl p-2 hover:text-[#5DAEDE]"
                         href={project.github}
                     >
                         {project.name}
