@@ -15,7 +15,7 @@ const Projects = () => {
     };
 
     return (
-        <section className="bg-[#1B1820] xxl:w-190 pb-1 rounded-sm text-white w-full">
+        <section className="bg-[#1B1820]  pb-1 rounded-sm text-white">
             <p className="bg-[#2B3244] p-2 rounded-t-sm text-2xl">
                 Recent Activity
             </p>

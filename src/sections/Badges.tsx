@@ -18,7 +18,7 @@ const images: Array<string> = [
 const Badges = () => {
     return (
         <section className="p-0 text-center ">
-            <div className="text-2xl text-white text-left bg-[#1B1820] rounded-sm w-full xxl:w-190 pb-1">
+            <div className="text-2xl text-white text-left bg-[#1B1820] rounded-sm xxl:w-197 pb-1">
                 <p className="bg-[#2B3244] p-2 rounded-t-sm">Badge Collector</p>
                 <div className="p-3 flex flex-wrap gap-4 ">
                     {images.map((src: string, index: number) => (

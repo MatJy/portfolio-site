@@ -17,11 +17,11 @@ const App: React.FC = () => {
                             <Home />
                         </section>
 
-                        <div className="xxl:flex xxl:flex-row-reverse pr-8">
-                            <section id="sidebar" className="pl-6">
+                        <div className="xxl:flex xxl:flex-row-reverse pr-3">
+                            <section id="sidebar" className="pl-3">
                                 <SideBar />
                             </section>
-                            <div className="p-6 pr-0">
+                            <div className="pb-3 pt-6 pl-3">
                                 <section id="badges" className="pb-6">
                                     <Badges />
                                 </section>
