@@ -1,7 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import useProjects from '../hooks/useProjects';
 import '../index.css';
 
 const Projects = () => {
+    const navigate = useNavigate();
+
+    const addDefaultImg = (ev: React.SyntheticEvent) => {
+        const target = ev.target as HTMLImageElement;
+        target.src = 'default.jpg';
+    };
+
     const { projects } = useProjects();
     const formatDate = (dateString: string | null) => {
         if (!dateString) return null;
@@ -22,24 +30,41 @@ const Projects = () => {
             {projects.slice(0, 3).map((project) => (
                 <div
                     key={project.name}
-                    className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm "
+                    className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm p-2"
                 >
-                    <a
-                        className="text-2xl xxl:text-2xl p-2 hover:text-[#5DAEDE]"
-                        href={project.github}
-                    >
-                        {project.name}
-                    </a>
-                    <p className="text-right pr-2">
-                        {' '}
-                        last committed on {formatDate(project.latestCommit)}
-                    </p>
+                    <div className="flex gap-4 items-start">
+                        <img
+                            src={`/projekti_trailerit/${project.name}_kuva.png`}
+                            alt={project.name}
+                            onError={addDefaultImg}
+                            className="w-40 h-auto rounded-sm flex-shrink-0"
+                        />
+                        <div className="flex flex-col flex-grow self-end">
+                            <a
+                                className="text-2xl hover:text-[#5DAEDE] pb-13"
+                                href={project.github}
+                            >
+                                {project.name}
+                            </a>
+                            <p className="text-right">
+                                last committed on{' '}
+                                {formatDate(project.latestCommit)}
+                            </p>
+                        </div>
+                    </div>
                     <div className="bg-[#21222E] p-3 rounded-sm mt-2 mx-2 mb-1 flex justify-between">
                         <p>Languages used</p>
                         <p>{project.languages.join(', ')}</p>
                     </div>
                 </div>
             ))}
+
+            <a
+                className="hover:text-[#5DAEDE] cursor-pointer block text-right pr-4"
+                onClick={() => navigate('/projects')}
+            >
+                All projects
+            </a>
         </section>
     );
 };
