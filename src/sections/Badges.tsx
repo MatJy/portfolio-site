@@ -13,6 +13,8 @@ const images: Array<string> = [
     '/python.png',
     '/svelte.png',
     '/typescript.png',
+    '/react.svg',
+    '/nodejs.svg',
 ];
 
 const Badges = () => {

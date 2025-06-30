@@ -56,8 +56,8 @@ const InfoBox = () => {
                     <b className="text-[#5DAEDE]">energetic</b>, and{' '}
                     <b className="text-[#5DAEDE]">approachable</b> person. I
                     might not always have the best advice, but I'm always{' '}
-                    <b className="text-[#5DAEDE]">willing to listen</b>—because,
-                    in the end, that's what matters most. At work, I'm{' '}
+                    <b className="text-[#5DAEDE]">willing to listen</b>,
+                    because, in the end, that's what matters most. At work, I'm{' '}
                     <b className="text-[#5DAEDE]">efficient</b>, a great{' '}
                     <b className="text-[#5DAEDE]">team player</b>, and somewhat{' '}
                     <b className="text-[#5DAEDE]">creative</b>. Most
@@ -65,8 +65,8 @@ const InfoBox = () => {
                     into everything I do.
                     <br />
                     <br />I created this site to give you a better idea of who I
-                    am—whether you're a random visitor, a potential employer, or
-                    someone I already know. My goal was to keep it{' '}
+                    am, whether you're a random visitor, a potential employer,
+                    or someone I already know. My goal was to keep it{' '}
                     <b className="text-[#5DAEDE]">professional yet relaxed</b>,
                     avoiding anything too serious or cliché. Hopefully, this
                     site{' '}

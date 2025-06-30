@@ -31,7 +31,7 @@ const useProjects = () => {
                 const projectsData: Project[] = await Promise.all(
                     // Loop through every repo
                     data.map(async (repo: GitHubRepo) => {
-                        // get lagnuages used in each repo
+                        // get languages used in each repo
                         const languagesResponse: Response = await fetch(
                             repo.languages_url,
                             {

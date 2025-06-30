@@ -37,23 +37,43 @@ const ProjectsPage = () => {
                 {projects.map((project) => (
                     <div
                         key={project.name}
-                        className="bg-[#16202D] p-6 rounded-sm w-full flex gap-4 items-start"
+                        className="bg-[#16202D] xxl:p-6 rounded-sm w-full flex gap-4 items-start"
                     >
-                        <img
-                            src={`/projekti_trailerit/${project.name}_kuva.png`}
-                            alt={project.name}
-                            onError={addDefaultImg}
-                            className="w-40 h-auto rounded-sm flex-shrink-0"
-                        />
+                        <Link
+                            to={`/trailer/${project.name}`}
+                            className="relative group"
+                        >
+                            <img
+                                src={`/projekti_trailerit/${project.name}_kuva.png`}
+                                alt={project.name}
+                                onError={addDefaultImg}
+                                className="xxl:w-45 xxl:h-auto h-36 rounded-sm flex-shrink-0"
+                            />
+                            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-40 group-hover:opacity-70 transition">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-12 w-12 text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </Link>
 
                         <div className="text-white flex flex-col flex-grow">
                             <a
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-2xl mb-4 hover:underline"
+                                className="text-2xl mb-4 hover:underline flex items-center gap-2 w-65"
                             >
                                 {project.name}
+                                <img
+                                    src="/github.png"
+                                    alt="github logo"
+                                    className="w-6 h-6"
+                                />
                             </a>
 
                             <div className="xxl:flex gap-5">

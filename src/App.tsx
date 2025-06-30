@@ -8,6 +8,7 @@ import SideBar from './sections/SideBar';
 import ProjectsPage from './sections/ProjectsPage';
 import './App.css';
 import './index.css';
+import TrailerPage from './sections/TrailerPage';
 
 const MainPage: React.FC = () => {
     return (
@@ -58,6 +59,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/trailer/:projectName" element={<TrailerPage />} />
             </Routes>
         </Router>
     );

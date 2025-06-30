@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import useProjects from '../hooks/useProjects';
 import '../index.css';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
     const navigate = useNavigate();
@@ -33,18 +34,38 @@ const Projects = () => {
                     className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm p-2"
                 >
                     <div className="flex gap-4 items-start">
-                        <img
-                            src={`/projekti_trailerit/${project.name}_kuva.png`}
-                            alt={project.name}
-                            onError={addDefaultImg}
-                            className="w-40 h-auto rounded-sm flex-shrink-0"
-                        />
+                        <Link
+                            to={`/trailer/${project.name}`}
+                            className="relative group"
+                        >
+                            <img
+                                src={`/projekti_trailerit/${project.name}_kuva.png`}
+                                alt={project.name}
+                                onError={addDefaultImg}
+                                className="w-40 h-auto rounded-sm flex-shrink-0"
+                            />
+                            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-40 hover:opacity-80 transition">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-12 w-12 text-white "
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </Link>
                         <div className="flex flex-col flex-grow self-end">
                             <a
-                                className="text-2xl hover:text-[#5DAEDE] pb-13"
+                                className="text-2xl hover:text-[#5DAEDE] pb-8 text-right xxl:pb-13 flex gap-3 items-center xxl:w-65"
                                 href={project.github}
                             >
                                 {project.name}
+                                <img
+                                    src="/github.png"
+                                    alt="github logo"
+                                    className="w-6 h-6"
+                                />
                             </a>
                             <p className="text-right">
                                 last committed on{' '}
