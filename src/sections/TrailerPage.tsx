@@ -1,19 +1,30 @@
 import { useParams } from 'react-router-dom';
+import { useRef } from 'react';
 
 const TrailerPage = () => {
     const { projectName } = useParams();
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    const addNoTrailer = () => {
+        if (videoRef.current) {
+            videoRef.current.src = '/projekti_trailerit/no_trailer.mp4';
+            videoRef.current.load();
+        }
+    };
 
     return (
-        <div className="xxl:pt-10 flex flex-col items-center min-h-screen bg-[#1B2838] ">
+        <div className="xxl:pt-10 flex flex-col items-center min-h-screen bg-[#1B2838]">
             <div className="xxl:w-3/5 w-screen">
                 <h2 className="text-white text-4xl pb-2 hidden xxl:block">
                     {projectName}
                 </h2>
-                <div className="xxl:bg-[#141B23] xxl:flex ">
+                <div className="xxl:bg-[#141B23] xxl:flex">
                     <video
                         controls
                         autoPlay
                         className="flex-1 xxl:max-w-[60%] h-full"
+                        ref={videoRef}
+                        onError={addNoTrailer}
                     >
                         <source
                             src={`/projekti_trailerit/${projectName}.mp4`}

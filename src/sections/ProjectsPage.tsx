@@ -33,11 +33,11 @@ const ProjectsPage = () => {
                 <p className="text-xs">(to the main page)</p>
             </div>
             <h1 className="text-3xl mb-4 text-white pt-4">All Projects</h1>
-            <div className=" w-100 xxl:w-2xl flex flex-col gap-6">
+            <div className=" w-full md:w-2xl flex flex-col gap-2">
                 {projects.map((project) => (
                     <div
                         key={project.name}
-                        className="bg-[#16202D] xxl:p-6 rounded-sm w-full flex gap-4 items-start"
+                        className="bg-[#16202D] xxl:p-2 rounded-sm w-full flex gap-4 items-start mb-3"
                     >
                         <Link
                             to={`/trailer/${project.name}`}
@@ -76,12 +76,12 @@ const ProjectsPage = () => {
                                 />
                             </a>
 
-                            <div className="xxl:flex gap-5">
-                                <div>
+                            <div className="md:flex gap-5">
+                                <div className="flex md:grid gap-1 md:gap-0">
                                     <p className="font-bold">Latest commit:</p>
                                     <p>{formatDate(project.latestCommit)}</p>
                                 </div>
-                                <div>
+                                <div className="flex md:grid gap-1 md:gap-0">
                                     <p className="font-bold">Languages:</p>
                                     <p>{project.languages.join(', ')}</p>
                                 </div>
