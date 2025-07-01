@@ -21,8 +21,9 @@ const TrailerPage = () => {
                 <div className="xxl:bg-[#141B23] xxl:flex">
                     <video
                         controls
+                        playsInline
                         autoPlay
-                        className="flex-1 xxl:max-w-[60%] h-full"
+                        className="flex-1 xxl:max-w-[60%]"
                         ref={videoRef}
                         onError={addNoTrailer}
                     >
