@@ -31,8 +31,7 @@
             "javascript",
             "docker",
             "socketio",
-            "express",
-            "EJS"
+            "express"
         ],
         "type": "full-stack"
     },
