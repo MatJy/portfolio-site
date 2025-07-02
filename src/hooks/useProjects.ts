@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import extraProjectsData from '../data/projects.json';
 
 export type Project = {
     name: string;
     github: string;
     languages: string[];
     latestCommit: string | null;
+    technologies: string[];
+    type: string;
 };
 
 type GitHubRepo = {
@@ -49,6 +52,12 @@ const useProjects = () => {
                                 },
                             }
                         );
+                        const extra = extraProjectsData.find(
+                            (p) =>
+                                p.name.toLocaleLowerCase() ===
+                                repo.name.toLocaleLowerCase()
+                        );
+
                         const commitsData = await commitResponse.json();
                         const languagesData = await languagesResponse.json();
 
@@ -64,6 +73,8 @@ const useProjects = () => {
                             // extract languages as an array
                             languages: Object.keys(languagesData),
                             latestCommit: latestCommit,
+                            technologies: extra?.technologies ?? [],
+                            type: extra?.type ?? '',
                         };
                     })
                 );
