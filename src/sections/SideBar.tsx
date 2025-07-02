@@ -6,12 +6,22 @@ const SideBar = () => {
 
     return (
         <section className="text-center">
-            <div className=" xxl:text-left xxl:pl-2 text-white bg-[#1B1820] rounded-sm xxl:w-80 xxl:pb-1 xxl:h-400 xxl:mt-6">
+            <div className="text-left pl-2 text-white bg-[#1B1820] xxl:w-80 pb-1 xxl:h-400 xxl:mt-6">
                 <p className="text-green-500 text-2xl">Currently In-Studying</p>
                 <p className="text-green-500 text-lg">Full Stack</p>
-                <br />
+                <br className="hidden xxl:block" />
                 <a
-                    className="hover:underline cursor-pointer "
+                    className="hover:underline cursor-pointer hidden xxl:block"
+                    onClick={() => navigate('/projects')}
+                >
+                    All projects
+                </a>
+            </div>
+
+            {/* Tämä div rajaa tilan ja siirtää linkin vasempaan laitaan mobiilissa */}
+            <div className="xxl:hidden mt-1 text-left">
+                <a
+                    className="underline cursor-pointer text-white bg-[#1B1820] px-3 py-1 inline-block"
                     onClick={() => navigate('/projects')}
                 >
                     All projects
