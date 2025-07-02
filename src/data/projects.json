@@ -1,0 +1,62 @@
+[
+    {
+        "name": "RahasadePeli",
+        "technologies": ["python"],
+        "type": "frontend"
+    },
+    {
+        "name": "book_register",
+        "technologies": ["php"],
+        "type": "full-stack"
+    },
+    {
+        "name": "GamingTrivia",
+        "technologies": ["svelte", "vite", "css", "javascript", "html"],
+        "type": "frontend"
+    },
+    {
+        "name": "RelaxationWebsite",
+        "technologies": ["html", "css", "javascript"],
+        "type": "frontend"
+    },
+    {
+        "name": "currency-converter",
+        "technologies": ["angular", "typescript", "html", "bootstrap"],
+        "type": "frontend"
+    },
+    {
+        "name": "rock-paper-scissors",
+        "technologies": [
+            "nodejs",
+            "javascript",
+            "docker",
+            "socketio",
+            "express",
+            "EJS"
+        ],
+        "type": "full-stack"
+    },
+    {
+        "name": "poll-serverless",
+        "technologies": ["nodejs", "javascript", "serverless", "AWSLambda"],
+        "type": "backend"
+    },
+    {
+        "name": "reaction-game",
+        "technologies": ["nativescript", "angular", "typescript", "html"],
+        "type": "frontend"
+    },
+    {
+        "name": "portfolio-site",
+        "technologies": [
+            "react",
+            "vite",
+            "typescript",
+            "javascript",
+            "css",
+            "tailwindcss",
+            "html"
+        ],
+        "type": "frontend"
+    }
+]
