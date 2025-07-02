@@ -2,12 +2,26 @@ import { Link } from 'react-router-dom';
 import useProjects from '../hooks/useProjects';
 import React from 'react';
 
+import githubLogo from '../assets/logos/github.png';
+
 const ProjectsPage = () => {
     const { projects } = useProjects();
+    const logos: Record<string, { default: string }> = import.meta.glob(
+        '../assets/logos/*.png',
+        { eager: true }
+    );
 
     const addDefaultImg = (ev: React.SyntheticEvent) => {
         const target = ev.target as HTMLImageElement;
         target.src = 'default.jpg';
+    };
+
+    const getLogo = (tech: string) => {
+        const entries = Object.entries(logos);
+        const match = entries.find(([path]) =>
+            path.toLowerCase().includes(tech.toLowerCase())
+        );
+        return match ? match[1].default : null;
     };
 
     const formatDate = (dateString: string | null) => {
@@ -70,7 +84,7 @@ const ProjectsPage = () => {
                             >
                                 {project.name}
                                 <img
-                                    src="/github.png"
+                                    src={githubLogo}
                                     alt="github logo"
                                     className="w-6 h-6"
                                 />
@@ -81,9 +95,24 @@ const ProjectsPage = () => {
                                     <p className="font-bold">Latest commit:</p>
                                     <p>{formatDate(project.latestCommit)}</p>
                                 </div>
-                                <div className="flex md:grid gap-1 md:gap-0">
-                                    <p className="font-bold">Languages:</p>
-                                    <p>{project.languages.join(', ')}</p>
+
+                                <div className="md:flex md:flex-col md:gap-1">
+                                    <p className="font-bold">Technologies:</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.technologies.map(
+                                            (tech: string) => {
+                                                const logo = getLogo(tech);
+
+                                                return logo ? (
+                                                    <img
+                                                        src={logo}
+                                                        alt={`${tech} logo`}
+                                                        className="w-10 h-10"
+                                                    />
+                                                ) : null;
+                                            }
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>

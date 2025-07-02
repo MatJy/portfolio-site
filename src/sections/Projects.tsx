@@ -3,12 +3,26 @@ import useProjects from '../hooks/useProjects';
 import '../index.css';
 import { Link } from 'react-router-dom';
 
+import githubLogo from '../assets/logos/github.png';
+
 const Projects = () => {
     const navigate = useNavigate();
+    const logos: Record<string, { default: string }> = import.meta.glob(
+        '../assets/logos/*.png',
+        { eager: true }
+    );
 
     const addDefaultImg = (ev: React.SyntheticEvent) => {
         const target = ev.target as HTMLImageElement;
         target.src = 'default.jpg';
+    };
+
+    const getLogo = (tech: string) => {
+        const entries = Object.entries(logos);
+        const match = entries.find(([path]) =>
+            path.toLowerCase().includes(tech.toLowerCase())
+        );
+        return match ? match[1].default : null;
     };
 
     const { projects } = useProjects();
@@ -57,12 +71,12 @@ const Projects = () => {
                         </Link>
                         <div className="flex flex-col flex-grow self-end">
                             <a
-                                className="text-2xl hover:text-[#5DAEDE] pb-8 text-right xxl:pb-13 flex gap-3 items-center xxl:w-65"
+                                className="text-2xl hover:text-[#5DAEDE] pb-8 text-right xxl:pb-13 flex gap-2 items-center xxl:w-65"
                                 href={project.github}
                             >
                                 {project.name}
                                 <img
-                                    src="/github.png"
+                                    src={githubLogo}
                                     alt="github logo"
                                     className="w-6 h-6"
                                 />
@@ -73,9 +87,21 @@ const Projects = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="bg-[#21222E] p-3 rounded-sm mt-2 mx-2 mb-1 flex justify-between">
-                        <p>Languages used</p>
-                        <p>{project.languages.join(', ')}</p>
+                    <div className="bg-[#21222E] p-3 rounded-sm mt-2 mb-1 flex justify-between">
+                        <p className="pr-2">Technologies:</p>
+                        <div className="flex flex-wrap gap-2">
+                            {project.technologies.map((tech: string) => {
+                                const logo = getLogo(tech);
+
+                                return logo ? (
+                                    <img
+                                        src={logo}
+                                        alt={`${tech} logo`}
+                                        className="w-10 h-10"
+                                    />
+                                ) : null;
+                            })}
+                        </div>{' '}
                     </div>
                 </div>
             ))}
