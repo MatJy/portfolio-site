@@ -8,6 +8,8 @@ const logos: Record<string, { default: string }> = import.meta.glob(
 const images = Object.values(logos).map((module) => module.default);
 
 const favorites: string[] = [
+    'nodejs',
+    'tailwindcss',
     'angular',
     'css',
     'docker',
@@ -15,11 +17,9 @@ const favorites: string[] = [
     'html',
     'javascript',
     'mysql',
-    'nodejs',
     'python',
     'react',
     'svelte',
-    'tailwindcss',
     'typescript',
 ];
 
