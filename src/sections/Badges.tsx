@@ -1,12 +1,13 @@
 import '../index.css';
 
-const logos: Record<string, { default: string }> = import.meta.glob(
-    '../assets/logos/*.png',
-    { eager: true }
-);
+const logos = import.meta.glob('../assets/logos/*.png', {
+    eager: true,
+}) as Record<string, { default: string }>;
 
-const images = Object.values(logos).map((module) => module.default);
-
+const images = Object.entries(logos).map(([path, module]) => {
+    const filename = path.split('/').pop()?.toLowerCase() || '';
+    return { src: module.default, filename };
+});
 const favorites: string[] = [
     'nodejs',
     'tailwindcss',
@@ -35,9 +36,9 @@ const Badges = () => {
                     </p>
                 </div>
                 <div className="p-3 flex flex-wrap gap-4 ">
-                    {images.map((src: string, index: number) => {
+                    {images.map(({ src, filename }, index) => {
                         const isFavorite = favorites.some((fav) =>
-                            src.toLowerCase().includes(fav.toLowerCase())
+                            filename.includes(fav)
                         );
                         return (
                             <img
