@@ -53,7 +53,7 @@ const Badges = () => {
                         );
                     })}
                 </div>
-                <div className="bg-[#101318] p-3 rounded-sm mt-4 mx-4 mb-3 ">
+                <div className="bg-[#101318] p-3 rounded-sm mt-2 mx-4 mb-3 ">
                     <p className="text-3xl xxl:text-5xl">{images.length}</p>
                     <p className="text-xl xxl:text-2xl">Total Badges Earned</p>
                 </div>
