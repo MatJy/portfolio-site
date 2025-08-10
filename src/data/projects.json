@@ -1,31 +1,43 @@
 [
     {
         "name": "RahasadePeli",
+        "link": "",
+
         "technologies": ["python"],
         "type": "frontend"
     },
     {
         "name": "book_register",
+        "link": "",
+
         "technologies": ["php"],
         "type": "full-stack"
     },
     {
         "name": "GamingTrivia",
+        "link": "",
+
         "technologies": ["svelte", "vite", "css", "javascript", "html"],
         "type": "frontend"
     },
     {
         "name": "RelaxationWebsite",
+        "link": "",
+
         "technologies": ["html", "css", "javascript"],
         "type": "frontend"
     },
     {
         "name": "currency-converter",
+        "link": "",
+
         "technologies": ["angular", "typescript", "html", "bootstrap"],
         "type": "frontend"
     },
     {
         "name": "rock-paper-scissors",
+        "link": "",
+
         "technologies": [
             "nodejs",
             "javascript",
@@ -37,16 +49,27 @@
     },
     {
         "name": "poll-serverless",
-        "technologies": ["nodejs", "javascript", "serverless", "AWSLambda"],
+        "link": "",
+
+        "technologies": [
+            "nodejs",
+            "javascript",
+            "serverless",
+            "AWSLambda",
+            "firebase"
+        ],
         "type": "backend"
     },
     {
         "name": "reaction-game",
+        "link": "",
+
         "technologies": ["nativescript", "angular", "typescript", "html"],
         "type": "frontend"
     },
     {
         "name": "portfolio-site",
+        "link": "",
         "technologies": [
             "react",
             "vite",
@@ -57,5 +80,18 @@
             "html"
         ],
         "type": "frontend"
+    },
+    {
+        "name": "WorkPulse",
+        "link": "https://workpulsee.netlify.app/",
+        "technologies": [
+            "react",
+            "nextjs",
+            "typescript",
+            "tailwindcss",
+            "html",
+            "supabase"
+        ],
+        "type": "full-stack"
     }
 ]

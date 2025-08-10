@@ -22,6 +22,8 @@ const favorites: string[] = [
     'react',
     'svelte',
     'typescript',
+    'supabase',
+    'nextjs',
 ];
 
 const Badges = () => {

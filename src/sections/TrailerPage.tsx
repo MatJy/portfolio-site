@@ -26,10 +26,11 @@ const TrailerPage = () => {
                         githubLink = project.github;
                         return (
                             <a
+                                key={project.name}
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-white text-4xl pb-2 hidden xxl:flex items-center gap-2 hover:underline"
+                                className="text-white text-4xl pb-2 hidden xxl:flex items-center gap-2 hover:underline w-fit"
                             >
                                 {project.name}
                                 <img
@@ -74,7 +75,7 @@ const TrailerPage = () => {
       text-white font-semibold 
       px-4 py-2 rounded-md 
       transition-colors duration-300
-      focus:outline-none focus:ring-2 focus:ring-[#4a94c9]
+      focus:outline-none focus:ring-2 focus:ring-[#4a94c9] cursor-pointer
     "
                             >
                                 Back

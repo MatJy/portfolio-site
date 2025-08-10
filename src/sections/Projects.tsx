@@ -71,7 +71,7 @@ const Projects = () => {
                         </Link>
                         <div className="flex flex-col flex-grow self-end">
                             <a
-                                className="text-2xl hover:text-[#5DAEDE] pb-8 text-right xxl:pb-13 flex gap-2 items-center xxl:w-65"
+                                className="text-2xl hover:text-[#5DAEDE] pb-8 text-right xxl:pb-13 flex gap-2 items-center xxl:w-fit"
                                 href={project.github}
                             >
                                 {project.name}
@@ -81,6 +81,23 @@ const Projects = () => {
                                     className="w-6 h-6"
                                 />
                             </a>
+
+                            {project.deployLink.length > 1 && (
+                                <a
+                                    href={project.deployLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline pb-2 flex items-center gap-2 w-fit"
+                                >
+                                    <p>View Project on netlify</p>
+                                    <img
+                                        src={'/netlify.svg'}
+                                        alt="github logo"
+                                        className="w-7 h-7"
+                                    />
+                                </a>
+                            )}
+
                             <p className="text-right">
                                 last committed on{' '}
                                 {formatDate(project.latestCommit)}
@@ -95,6 +112,7 @@ const Projects = () => {
 
                                 return logo ? (
                                     <img
+                                        key={tech}
                                         src={logo}
                                         alt={`${tech} logo`}
                                         className="w-10 h-10"

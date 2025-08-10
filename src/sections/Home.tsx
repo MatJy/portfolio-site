@@ -62,12 +62,12 @@ const Home = () => {
                         <p className="pr-2 md:hidden">Coder</p>
                         <img
                             className="w-14 md:w-18"
-                            src="/5_badge.png"
+                            src="/10projects.png"
                             alt=""
                         />
                         <div className="p-2">
-                            <p>Selected coder</p>
-                            <p>135 xp</p>
+                            <p>Adept coder</p>
+                            <p>150 xp</p>
                         </div>
                     </div>
                     <div className="bg-[#1B1820] pl-2">

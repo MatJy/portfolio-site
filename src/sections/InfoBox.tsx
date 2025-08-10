@@ -7,7 +7,7 @@ const InfoBox = () => {
 
             <div className="bg-[#101318] mt-6 mx-4 mb-3 rounded-sm">
                 <p className="p-2 text-lg">
-                    I'm a second-year{' '}
+                    I'm a third-year{' '}
                     <b className="text-[#5DAEDE]">
                         Business Information Technology student at JAMK
                         University of Applied Sciences
@@ -16,11 +16,14 @@ const InfoBox = () => {
                     <b className="text-[#5DAEDE]">full-stack development</b>.
                     I'm currently{' '}
                     <b className="text-[#5DAEDE]">
-                        seeking opportunities in IT
+                        seeking opportunities in IT and thesis and/or internship
+                        opportunities
                     </b>{' '}
                     and have experience with various technologies. I adapt{' '}
                     <b className="text-[#5DAEDE]">quickly</b> to new tools and
-                    frameworks, continuously expanding my skill set.
+                    frameworks, continuously expanding my skill set. I think
+                    creativity or visuality when it comes to designing something
+                    is my biggest weakness
                     <br />
                     <br />
                     While coding is my main passion, I'm also interested in

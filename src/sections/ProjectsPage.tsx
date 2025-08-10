@@ -80,7 +80,7 @@ const ProjectsPage = () => {
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-2xl mb-4 hover:underline flex items-center gap-2 w-65"
+                                className="text-2xl mb-4 hover:underline flex items-center gap-2 w-fit"
                             >
                                 {project.name}
                                 <img
@@ -89,6 +89,22 @@ const ProjectsPage = () => {
                                     className="w-6 h-6"
                                 />
                             </a>
+
+                            {project.deployLink.length > 1 && (
+                                <a
+                                    href={project.deployLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline pb-2 flex items-center gap-2 w-fit"
+                                >
+                                    <p>View Project on netlify</p>
+                                    <img
+                                        src={'/netlify.svg'}
+                                        alt="github logo"
+                                        className="w-7 h-7"
+                                    />
+                                </a>
+                            )}
 
                             <div className="md:flex gap-5">
                                 <div className="flex md:grid gap-1 md:gap-0">
@@ -105,6 +121,7 @@ const ProjectsPage = () => {
 
                                                 return logo ? (
                                                     <img
+                                                        key={tech}
                                                         src={logo}
                                                         alt={`${tech} logo`}
                                                         className="w-10 h-10"

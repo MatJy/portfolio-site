@@ -8,6 +8,7 @@ export type Project = {
     latestCommit: string | null;
     technologies: string[];
     type: string;
+    deployLink: string;
 };
 
 type GitHubRepo = {
@@ -75,6 +76,7 @@ const useProjects = () => {
                             latestCommit: latestCommit,
                             technologies: extra?.technologies ?? [],
                             type: extra?.type ?? '',
+                            deployLink: extra?.link ?? '',
                         };
                     })
                 );
