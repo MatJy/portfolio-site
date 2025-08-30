@@ -54,7 +54,7 @@ const ProjectsPage = () => {
                         className="bg-[#16202D] xxl:p-2 rounded-sm w-full flex gap-4 items-start mb-3"
                     >
                         <Link
-                            to={`/trailer/${project.name}`}
+                            to={`/projects/${project.name}`}
                             className="relative group"
                         >
                             <img

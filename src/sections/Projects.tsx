@@ -49,7 +49,7 @@ const Projects = () => {
                 >
                     <div className="flex gap-4 items-start">
                         <Link
-                            to={`/trailer/${project.name}`}
+                            to={`/projects/${project.name}`}
                             className="relative group"
                         >
                             <img

@@ -42,7 +42,7 @@ const FavoriteProject = () => {
             >
                 <div className="flex gap-4 items-start">
                     <Link
-                        to={`/trailer/${favorite.name}`}
+                        to={`/projects/${favorite.name}`}
                         className="relative group"
                     >
                         <img
