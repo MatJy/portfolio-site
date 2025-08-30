@@ -64,7 +64,10 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
-                <Route path="/trailer/:projectName" element={<TrailerPage />} />
+                <Route
+                    path="/projects/:projectName"
+                    element={<TrailerPage />}
+                />
             </Routes>
         </Router>
     );
