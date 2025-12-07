@@ -45,7 +45,7 @@ const Projects = () => {
             {projects.slice(0, 3).map((project) => (
                 <div
                     key={project.name}
-                    className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm p-2"
+                    className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm p-2 relative"
                 >
                     <div className="flex gap-4 items-start">
                         <Link
@@ -124,12 +124,14 @@ const Projects = () => {
                 </div>
             ))}
 
-            <a
-                className="hover:text-[#5DAEDE] cursor-pointer block text-right pr-4"
-                onClick={() => navigate('/projects')}
-            >
-                All projects
-            </a>
+            <div className="flex justify-end pr-4">
+                <a
+                    className="hover:text-[#5DAEDE] cursor-pointer w-fit"
+                    onClick={() => navigate('/projects')}
+                >
+                    All projects
+                </a>
+            </div>
         </section>
     );
 };

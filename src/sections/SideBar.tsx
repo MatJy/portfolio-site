@@ -11,7 +11,7 @@ const SideBar = () => {
                 <p className="text-green-500 text-lg">Full Stack</p>
                 <br className="hidden xxl:block" />
                 <a
-                    className="hover:underline cursor-pointer hidden xxl:block"
+                    className="hover:underline cursor-pointer hidden xxl:block w-fit"
                     onClick={() => navigate('/projects')}
                 >
                     All projects

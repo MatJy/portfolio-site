@@ -93,5 +93,21 @@
             "supabase"
         ],
         "type": "full-stack"
+    },
+    {
+        "name": "WaveSpacer",
+        "link": "",
+        "technologies": [
+            "angular",
+            "nodejs",
+            "typescript",
+            "tailwindcss",
+            "html",
+            "javascript",
+            "express",
+            "AWS",
+            "mysql"
+        ],
+        "type": "full-stack"
     }
 ]

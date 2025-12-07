@@ -37,7 +37,7 @@ const ProjectsPage = () => {
 
     return (
         <div className="pt-0 flex flex-col items-center min-h-screen bg-[#1B2838]">
-            <div className="bg-[#2A3340] text-white w-full xxl:w-185 h-25 content-center pl-10  pb-5">
+            <div className="bg-[#2A3340] text-white w-full xxl:w-185 h-25 content-center pl-10 pb-5">
                 <div className="flex items-end gap-2">
                     <h3 className="text-3xl hover:text-[#5DAEDE]">
                         <Link to="/">Matias</Link>
@@ -46,12 +46,14 @@ const ProjectsPage = () => {
                 </div>
                 <p className="text-xs">(to the main page)</p>
             </div>
+
             <h1 className="text-3xl mb-4 text-white pt-4">All Projects</h1>
-            <div className=" w-full md:w-2xl flex flex-col gap-2">
+
+            <div className="w-full md:w-2xl flex flex-col gap-2">
                 {projects.map((project) => (
                     <div
                         key={project.name}
-                        className="bg-[#16202D] xxl:p-2 rounded-sm w-full flex gap-4 items-start mb-3"
+                        className="bg-[#16202D] p-2 rounded-sm w-full flex gap-4 items-stretch md:items-start mb-3"
                     >
                         <Link
                             to={`/projects/${project.name}`}
@@ -61,7 +63,7 @@ const ProjectsPage = () => {
                                 src={`/projekti_trailerit/${project.name}_kuva.png`}
                                 alt={project.name}
                                 onError={addDefaultImg}
-                                className="xxl:w-45 xxl:h-auto h-36 rounded-sm flex-shrink-0"
+                                className="w-40 h-full md:h-auto xxl:w-45 object-cover rounded-sm flex-shrink-0"
                             />
                             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-40 group-hover:opacity-70 transition">
                                 <svg
@@ -100,19 +102,19 @@ const ProjectsPage = () => {
                                     <p>View Project on netlify</p>
                                     <img
                                         src={'/netlify.svg'}
-                                        alt="github logo"
+                                        alt="netlify logo"
                                         className="w-7 h-7"
                                     />
                                 </a>
                             )}
 
-                            <div className="md:flex gap-5">
+                            <div className="md:flex md:items-start gap-5">
                                 <div className="flex md:grid gap-1 md:gap-0">
                                     <p className="font-bold">Latest commit:</p>
                                     <p>{formatDate(project.latestCommit)}</p>
                                 </div>
 
-                                <div className="md:flex md:flex-col md:gap-1">
+                                <div className="md:flex md:flex-col md:gap-1 md:max-w-[300px]">
                                     <p className="font-bold">Technologies:</p>
                                     <div className="flex flex-wrap gap-2">
                                         {project.technologies.map(
@@ -124,7 +126,7 @@ const ProjectsPage = () => {
                                                         key={tech}
                                                         src={logo}
                                                         alt={`${tech} logo`}
-                                                        className="w-10 h-10"
+                                                        className="w-10 h-10 object-contain"
                                                     />
                                                 ) : null;
                                             }

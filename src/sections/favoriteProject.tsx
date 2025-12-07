@@ -25,7 +25,7 @@ const FavoriteProject = () => {
 
     const { projects } = useProjects();
 
-    const favorite = projects.find((project) => project.name === 'WorkPulse');
+    const favorite = projects.find((project) => project.name === 'WaveSpacer');
 
     if (!favorite) {
         return null; // or some loading/error state
