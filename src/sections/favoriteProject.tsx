@@ -24,37 +24,46 @@ const FavoriteProject = () => {
     };
 
     const { projects } = useProjects();
-
     const favorite = projects.find((project) => project.name === 'WaveSpacer');
 
-    if (!favorite) {
-        return null; // or some loading/error state
-    }
+    if (!favorite) return null;
 
     return (
-        <section className="bg-[#1B1820]  pb-1 rounded-sm text-white">
-            <p className="bg-[#2B3244] p-2 rounded-t-sm text-2xl">
+        <section className="bg-[#1B1820] pb-2 rounded-sm text-white">
+            <p className="bg-[#2B3244] p-2 rounded-t-sm text-xl md:text-2xl">
                 Favorite project
             </p>
-            <div
-                key={favorite.name}
-                className="bg-[#0B0B0F] mt-6 mx-4 mb-4 pb-1 rounded-sm p-2"
-            >
-                <div className="flex gap-4 items-start">
+
+            <div className="bg-[#0B0B0F] mt-6 mx-3 md:mx-4 mb-4 rounded-sm p-3 relative">
+                <Link
+                    to={`/projects/${favorite.name}`}
+                    className="
+                            hidden md:block
+                            absolute top-2 right-2
+                            text-sm
+                            text-[#5DAEDE]
+                            hover:underline
+                        "
+                >
+                    See more →
+                </Link>
+                {/* Top section */}
+                <div className="flex flex-col md:flex-row gap-4 items-center md:items-start">
+                    {/* Image */}
                     <Link
                         to={`/projects/${favorite.name}`}
-                        className="relative group"
+                        className="relative group w-full max-w-xs md:w-40"
                     >
                         <img
                             src={`/projekti_trailerit/${favorite.name}_kuva.png`}
                             alt={favorite.name}
                             onError={addDefaultImg}
-                            className="w-40 h-auto rounded-sm flex-shrink-0"
+                            className="w-full rounded-sm"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-40 hover:opacity-80 transition">
+                        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-40 group-hover:opacity-80 transition">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-12 w-12 text-white "
+                                className="h-12 w-12 text-white"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                             >
@@ -62,40 +71,84 @@ const FavoriteProject = () => {
                             </svg>
                         </div>
                     </Link>
-                    <div className="flex flex-col flex-grow self-end">
+
+                    {/* Info */}
+                    <div className="flex flex-col flex-grow w-full">
+                        {/* Title */}
                         <a
-                            className="text-2xl hover:text-[#5DAEDE] pb-8 text-right xxl:pb-13 flex gap-2 items-center xxl:w-fit"
                             href={favorite.github}
+                            className="
+                                text-xl md:text-2xl
+                                hover:text-[#5DAEDE]
+                                flex items-center gap-2
+                                self-center md:self-start
+                                text-center md:text-right
+                                pb-2 md:pb-6
+                            "
                         >
                             {favorite.name}
                             <img
                                 src={githubLogo}
                                 alt="github logo"
-                                className="w-6 h-6"
+                                className="w-5 h-5 md:w-6 md:h-6"
                             />
                         </a>
 
+                        <Link
+                            to={`/projects/${favorite.name}`}
+                            className="
+                                    md:hidden
+                                    text-sm
+                                    text-[#5DAEDE]
+                                    hover:underline
+                                    self-center
+                                    pb-2
+                                "
+                        >
+                            See more →
+                        </Link>
+
+                        {/* Deploy link */}
                         {favorite.deployLink.length > 1 && (
                             <a
                                 href={favorite.deployLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:underline pb-2 flex items-center gap-2 w-fit"
+                                className="
+                                    hover:underline
+                                    flex items-center gap-2
+                                    w-fit
+                                    self-center md:self-end
+                                    pb-2
+                                "
                             >
-                                <p>View Project on netlify</p>
+                                <span>View project on Netlify</span>
                                 <img
-                                    src={'/netlify.svg'}
-                                    alt="github logo"
-                                    className="w-7 h-7"
+                                    src="/netlify.svg"
+                                    alt="netlify logo"
+                                    className="w-6 h-6"
                                 />
                             </a>
                         )}
                     </div>
                 </div>
-                <div className="bg-[#21222E] p-3 rounded-sm mt-2 mb-1 flex justify-between">
+
+                {/* Technologies */}
+                <div
+                    className="
+                        bg-[#21222E]
+                        p-3
+                        rounded-sm
+                        mt-3
+                        flex flex-col sm:flex-row
+                        gap-2
+                        sm:justify-between
+                        items-start sm:items-center
+                    "
+                >
                     <p className="pr-2">Technologies:</p>
-                    <div className="flex flex-wrap gap-2">
-                        {favorite?.technologies.map((tech: string) => {
+                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                        {favorite.technologies.map((tech: string) => {
                             const logo = getLogo(tech);
 
                             return logo ? (
@@ -103,11 +156,11 @@ const FavoriteProject = () => {
                                     key={tech}
                                     src={logo}
                                     alt={`${tech} logo`}
-                                    className="w-10 h-10"
+                                    className="w-8 h-8 md:w-10 md:h-10"
                                 />
                             ) : null;
                         })}
-                    </div>{' '}
+                    </div>
                 </div>
             </div>
         </section>

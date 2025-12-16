@@ -17,13 +17,25 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                     Ticorporate opintojakson portfolio ja itsereflektio
                 </h2>
                 <section className="mb-4 mt-2">
-                    <p className="mb-3 text-gray-300">
+                    <p className="mb-3">
+                        Pähkinänkuoressa mitä muunmuassa tein TC:n aikana:
+                        kaikki backend kansion alla oleva, johon kuuluu;
+                        spotify-api integraatio, spotify kirjautuminen, jwt
+                        tokenit, api reittien hyödyntäminen sovelluksessa,
+                        sql-kyselyt tietokantaan, aws secret manager
+                        integraatio, tietokannan tekeminen, tietojen haku ja
+                        tallennus kantaan, sovelluslogiikka, tietokannan datan
+                        hyödyntäminen.
+                    </p>
+
+                    <p className="mb-3">
                         Valitsin nämä backend-esimerkit portfolioon, koska ne
                         kuvaavat parhaiten omaa rooliani projektissa sekä sitä,
                         missä koin kehittyneeni eniten opintojakson aikana.
                         Esimerkit edustavat oikeaa tuotantokoodia, tietoturvaa
                         ja suorituskykyä huomioivia ratkaisuja.
                     </p>
+
                     <h3 className="text-lg font-semibold mb-2 text-[#2D81B2]">
                         Backend esimerkit
                     </h3>
@@ -107,6 +119,15 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                         käyneenä ei minulla siitä paljoa tietoa ollut. Nyt
                         kuitenkin tiedän paremmin miten koodi siellä toimii ja
                         kuinka se sovellus oikeasti siellä pilven päällä on.
+                    </p>
+
+                    <p className="mb-3">
+                        Itse koodaamisen suhteen olen myös tullut siinä
+                        itsevarmemmaksi. Kaikkea ei voi eikä pidäkään tehdä
+                        täydellisesti vaan on hyvä tiedostaa se, että asioita ei
+                        aina tarvitse viilata ihan loppuun asti vaan seuraavaan
+                        asiaan voi jo siirtyä ja myöhemmin voi
+                        jatkaa/parannella.
                     </p>
 
                     <p>
