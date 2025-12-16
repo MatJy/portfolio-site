@@ -1,14 +1,17 @@
 import { useParams } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import useProjects from '../hooks/useProjects';
 
 import githubLogo from '../assets/logos/github.png';
 import { Link } from 'react-router-dom';
+import projectDescriptions from '../content/projectDescriptions';
 
 const TrailerPage = () => {
     const { projectName } = useParams();
     const videoRef = useRef<HTMLVideoElement>(null);
     const { projects } = useProjects();
+    const [language, setLanguage] = useState<'fi' | 'en'>('fi');
+
     let githubLink;
 
     const addNoTrailer = () => {
@@ -42,12 +45,12 @@ const TrailerPage = () => {
                         );
                     }
                 })}
-                <div className="xxl:bg-[#141B23] xxl:flex">
+                <div className="xxl:bg-[#141B23]">
                     <video
                         controls
                         playsInline
                         autoPlay
-                        className="flex-1 xxl:max-w-[60%]"
+                        className=""
                         ref={videoRef}
                         onError={addNoTrailer}
                     >
@@ -71,17 +74,33 @@ const TrailerPage = () => {
                         <Link to="/projects">
                             <button
                                 className="
-      bg-[#5DAEDE] hover:bg-[#4a94c9] 
-      text-white font-semibold 
-      px-4 py-2 rounded-md 
-      transition-colors duration-300
-      focus:outline-none focus:ring-2 focus:ring-[#4a94c9] cursor-pointer
-    "
+                                bg-[#2D81B2] hover:bg-[#4a94c9] 
+                                text-white font-semibold 
+                                px-4 py-2 rounded-md 
+                                transition-colors duration-300
+                                focus:outline-none focus:ring-2 focus:ring-[#4a94c9] cursor-pointer"
                             >
                                 Back
                             </button>
                         </Link>
                     </div>
+                </div>
+                <div className="mt-5 mb-5 text-left text-white ml-4 mr-4 xxl:ml-0 xxl:mr-0">
+                    <p>Information about the project</p>
+
+                    <button
+                        onClick={() =>
+                            setLanguage((prev) => (prev === 'fi' ? 'en' : 'fi'))
+                        }
+                        className="text-sm text-[#2D81B2] hover:underline"
+                    >
+                        {language === 'fi' ? 'EN' : 'FI'}
+                    </button>
+                    <div className="mt-2 h-[1px] w-[90%] bg-gradient-to-r from-[#2D81B2] to-transparent" />
+
+                    {projectDescriptions[projectName ?? '']?.[language] ?? (
+                        <p>No description available for this project.</p>
+                    )}
                 </div>
             </div>
         </div>
