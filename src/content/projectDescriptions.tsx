@@ -73,6 +73,13 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                         alt="Database schema"
                         collapsible
                     />
+
+                    <ImageBlock
+                        title="Alkuperäinen tietokannan rakenne"
+                        src="/dbschema_og.png"
+                        alt="Original database schema"
+                        collapsible
+                    />
                 </section>
                 <section className="mb-6">
                     <h3 className="text-lg font-semibold mb-2 text-[#2D81B2]">
