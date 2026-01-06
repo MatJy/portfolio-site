@@ -139,7 +139,7 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                         jatkaa/parannella.
                     </p>
 
-                    <p>
+                    <p className="mb-3">
                         Opin käyttämään github projects
                         projektinhallintatyökalua. Descriptionien tärkeys tuli
                         opittua ehkä vähän liian myöhään ja se kuinka kuvaavia
