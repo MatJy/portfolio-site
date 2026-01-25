@@ -73,6 +73,13 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                         alt="Database schema"
                         collapsible
                     />
+
+                    <ImageBlock
+                        title="Alkuperäinen tietokannan rakenne"
+                        src="/dbschema_og.png"
+                        alt="Original database schema"
+                        collapsible
+                    />
                 </section>
                 <section className="mb-6">
                     <h3 className="text-lg font-semibold mb-2 text-[#2D81B2]">
@@ -86,7 +93,9 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                         backendistä sekä tietokannoista, joten tällä osaamisella
                         oli hyvä lähteä kehittelemään uutta. Backendin suhteen
                         ennen TC:tä, minulla oli mielestäni eniten parantamisen
-                        varaa ja siinä halusinkin kehittyä enemmän.
+                        varaa ja siinä halusinkin kehittyä enemmän. Ainoa mistä
+                        oli suurempi osaamisen puute oli projektinhallinta sekä
+                        gitin selkeä käyttäminen
                     </p>
 
                     <p>
@@ -128,6 +137,15 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                         aina tarvitse viilata ihan loppuun asti vaan seuraavaan
                         asiaan voi jo siirtyä ja myöhemmin voi
                         jatkaa/parannella.
+                    </p>
+
+                    <p className="mb-3">
+                        Opin käyttämään github projects
+                        projektinhallintatyökalua. Descriptionien tärkeys tuli
+                        opittua ehkä vähän liian myöhään ja se kuinka kuvaavia
+                        niiden oikeasti työelämässä pitäisi olla. Toisaalta itse
+                        sen päivittämisessä ja omien taskien siirtelyssä on
+                        varmasti vielä lisää opittavaa
                     </p>
 
                     <p>
