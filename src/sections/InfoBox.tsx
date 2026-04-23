@@ -16,10 +16,10 @@ const InfoBox = () => {
                     <b className="text-[#5DAEDE]">full-stack development</b>.
                     I'm currently{' '}
                     <b className="text-[#5DAEDE]">
-                        seeking opportunities in IT and thesis and/or internship
-                        opportunities
+                        seeking opportunities in IT, especially in software
+                        development
                     </b>{' '}
-                    and have experience with various technologies. I adapt{' '}
+                    and I have experience with various technologies. I adapt{' '}
                     <b className="text-[#5DAEDE]">quickly</b> to new tools and
                     frameworks, continuously expanding my skill set. I think
                     creativity or visuality when it comes to designing something

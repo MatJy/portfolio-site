@@ -263,6 +263,23 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
                     Ticorporate courses portfolio and self-reflection
                 </h2>
                 <section className="mb-4 mt-2">
+                    <p className="mb-3">
+                        In a nutshell, what I did during TC: everything under
+                        the backend folder, which includes; spotify-api
+                        integration, spotify login, jwt tokens, utilizing api
+                        routes in the application, sql queries to the database,
+                        aws secret manager integration, creating a database,
+                        retrieving and storing data in the database, application
+                        logic, utilizing database data .
+                    </p>
+
+                    <p className="mb-3">
+                        I chose these backend examples for the portfolio because
+                        they best describe my own role in the project and where
+                        I felt I developed the most during the course. The
+                        examples represent real production code, security and
+                        performance-oriented solutions.
+                    </p>
                     <h3 className="text-lg font-semibold mb-2 text-[#2D81B2]">
                         Backend examples
                     </h3>
