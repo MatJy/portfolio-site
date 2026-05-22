@@ -1,10 +1,7 @@
 import './Home.css';
 import '../index.css';
-import useProjects from '../hooks/useProjects';
 
 const Home = () => {
-    const { projects } = useProjects();
-
     return (
         <section className="p-0 pb-0 text-left text-white w-full">
             <meta
@@ -15,8 +12,8 @@ const Home = () => {
             <div className="flex flex-col lg:grid lg:grid-cols-[16rem_minmax(0,1fr)_20rem] lg:items-start lg:gap-8">
                 <div className="flex flex-row md:flex-col items-start space-x-4 md:space-x-0 md:space-y-4 h-50 md:h-auto lg:w-64">
                     <img
-                        className="md:h-80 w-40 h-50 md:w-64 relative border-2 neon-glow border-gray-500"
-                        src="/omakuva.jpg"
+                        className="w-40 md:w-64 h-auto relative border-2 neon-glow border-gray-500"
+                        src="/omakuva3.JPEG"
                         alt="Picture of me"
                     />
 
@@ -77,9 +74,6 @@ const Home = () => {
                             <p>Junior Developer</p>
                             <p>150 xp</p>
                         </div>
-                    </div>
-                    <div className="w-full bg-[#1B1820] pl-2 rounded-sm mt-1">
-                        <p>{projects.length} projects done</p>
                     </div>
                 </div>
             </div>

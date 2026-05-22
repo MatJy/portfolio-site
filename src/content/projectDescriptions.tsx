@@ -9,7 +9,25 @@ import {
 
 type Language = 'fi' | 'en';
 
-const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
+type ProjectDescriptionEntry = Partial<Record<Language, JSX.Element>>;
+
+const createSimpleDescription = (
+    title: string,
+    description: string,
+): ProjectDescriptionEntry => ({
+    en: (
+        <>
+            <h2 className="text-lg font-semibold text-[#2D81B2] mb-5 mt-2">
+                {title}
+            </h2>
+            <section className="mb-6 mt-2">
+                <p>{description}</p>
+            </section>
+        </>
+    ),
+});
+
+const projectDescriptions: Record<string, ProjectDescriptionEntry> = {
     WaveSpacer: {
         fi: (
             <>
@@ -475,6 +493,46 @@ const projectDescriptions: Record<string, Record<Language, JSX.Element>> = {
             </>
         ),
     },
+    'portfolio-site': createSimpleDescription(
+        'Portfolio Site Overview',
+        'A personal portfolio website built to present my projects, technical skills, and background in a clear and professional way. Developed primarily with TypeScript, it highlights my frontend development skills, attention to UI structure, and ability to create a polished web presence.',
+    ),
+    WorkPulse: createSimpleDescription(
+        'WorkPulse Overview',
+        'A productivity application designed to help users structure their work sessions and maintain healthy break habits. The app allows users to create and continue work sessions while receiving break reminders, demonstrating my ability to build practical user-focused features, manage application state, and develop functionality with TypeScript.',
+    ),
+    'poll-serverless': createSimpleDescription(
+        'Poll Serverless Overview',
+        'A serverless backend project created as a final assignment for a backend course, built using AWS serverless technologies. This project demonstrates my understanding of cloud-based architecture, backend logic, and scalable application design, as well as my ability to work with modern backend deployment models.',
+    ),
+    'reaction-game': createSimpleDescription(
+        'Reaction Game Overview',
+        'A mobile application development course final project focused on creating a reaction-based game experience. Built with TypeScript and supported by SCSS, HTML, and JavaScript, the project demonstrates my ability to develop interactive mobile-friendly applications and combine functionality with responsive visual design.',
+    ),
+    'rock-paper-scissors': createSimpleDescription(
+        'Rock Paper Scissors Overview',
+        'A backend course final project centered around implementing the classic Rock Paper Scissors game. Built with JavaScript and EJS, it showcases my understanding of server-side programming, dynamic rendering, and application logic, while also demonstrating the ability to turn simple concepts into fully working web applications.',
+    ),
+    GamingTrivia: createSimpleDescription(
+        'GamingTrivia Overview',
+        'A frontend course final project featuring an interactive gaming-themed trivia game built with Svelte, JavaScript, HTML, and CSS. This project highlights my ability to create engaging user interfaces, structure frontend application logic, and deliver interactive experiences with a modern frontend framework.',
+    ),
+    RelaxationWebsite: createSimpleDescription(
+        'Relaxation Website Overview',
+        'A school project website created with HTML, CSS, and a small amount of JavaScript, with a focus on layout, styling, and user-friendly presentation. It reflects my foundation in core web technologies and my ability to design and build clean, visually consistent static websites.',
+    ),
+    RahasadePeli: createSimpleDescription(
+        'RahasadePeli Overview',
+        'A Python-based game developed for the MOOC 2024 programming course. This project demonstrates my understanding of programming fundamentals, problem-solving, and logic building, while also showing my ability to apply those skills in a practical and interactive project.',
+    ),
+    'currency-converter': createSimpleDescription(
+        'Currency Converter Overview',
+        'A currency converter application built with TypeScript, HTML, and CSS. The project demonstrates my ability to create useful everyday tools with a clean interface, handle user input effectively, and build practical frontend functionality with strong typing and structured code.',
+    ),
+    book_register: createSimpleDescription(
+        'Book Register Overview',
+        'A simple PHP application with database integration for managing and displaying book information. This project highlights my understanding of backend development fundamentals, working with databases, and building applications that combine server-side logic with persistent data storage.',
+    ),
 };
 
 export default projectDescriptions;
