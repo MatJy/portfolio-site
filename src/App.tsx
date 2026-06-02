@@ -10,6 +10,7 @@ import './App.css';
 import './index.css';
 import TrailerPage from './sections/TrailerPage';
 import FavoriteProject from './sections/favoriteProject';
+import SkillsShowcase from './sections/SkillsShowcase';
 
 const MainPage: React.FC = () => {
     return (
@@ -34,12 +35,16 @@ const MainPage: React.FC = () => {
                                 <SideBar />
                             </section>
                             <div className="pb-3 pt-6 pl-3">
-                                <section id="badges" className="pb-6">
-                                    <FavoriteProject />
+                                <section id="skills-showcase" className="pb-6">
+                                    <SkillsShowcase />
                                 </section>
 
                                 <section id="badges" className="pb-6">
                                     <Badges />
+                                </section>
+
+                                <section id="favorite-project" className="pb-6">
+                                    <FavoriteProject />
                                 </section>
 
                                 <section id="infobox" className="pb-6">

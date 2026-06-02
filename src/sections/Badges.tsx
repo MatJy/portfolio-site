@@ -27,6 +27,7 @@ const favorites: string[] = [
     'nextjs',
     'express',
     'aws',
+    'git',
 ];
 
 const formatTechName = (filename: string) => {
@@ -72,7 +73,7 @@ const Badges = () => {
                 <div className="p-3 flex flex-wrap gap-4">
                     {images.map(({ src, filename }, index) => {
                         const isFavorite = favorites.some((fav) =>
-                            filename.includes(fav)
+                            filename.includes(fav),
                         );
 
                         const techName = formatTechName(filename);
@@ -88,8 +89,8 @@ const Badges = () => {
                                     title={techName}
                                     className={
                                         isFavorite
-                                            ? 'w-12 xxl:w-19 h-12 xxl:h-19 border-2 border-[#5DAEDE] p-1'
-                                            : 'w-12 xxl:w-19 h-12 xxl:h-19'
+                                            ? 'w-12 xxl:w-15 h-12 xxl:h-15 border-2 border-[#5DAEDE] p-1'
+                                            : 'w-12 xxl:w-15 h-12 xxl:h-15'
                                     }
                                 />
 
@@ -104,7 +105,7 @@ const Badges = () => {
                 </div>
 
                 <div className="bg-[#101318] p-3 rounded-sm mt-2 mx-4 mb-3">
-                    <p className="text-3xl xxl:text-5xl">{images.length}</p>
+                    <p className="text-3xl xxl:text-4xl">{images.length}</p>
                     <p className="text-xl xxl:text-2xl">Total Badges Earned</p>
                 </div>
             </div>

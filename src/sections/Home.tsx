@@ -40,15 +40,16 @@ const Home = () => {
                 </div>
 
                 <div className="w-full lg:min-w-0">
-                    <p className="md:text-4xl lg:text-5xl md:pb-10 lg:pb-15 pt-4 hidden md:block ">
+                    <p className="md:text-3xl lg:text-4xl md:pb-10 lg:pb-15 pt-4 hidden md:block ">
                         Matias Jylhä
                     </p>
 
-                    <p className="text-xl md:text-2xl pt-3 md:pt-0 lg:max-w-3xl">
-                        Hello, and welcome to my portfolio website! I'm a
-                        passionate programmer and video game enthusiast, hence
-                        the theme 🎮. Here, I showcase my projects, share a bit
-                        about myself, and highlight my professional side.
+                    <p className="text-l md:text-xl pt-3 md:pt-0 lg:max-w-3xl">
+                        Hello and welcome to my portfolio website! I'm a recent
+                        IT graduate with a passion for software development and
+                        solving technical challenges. This site showcases my
+                        projects, skills, and a bit of my personality. And yes,
+                        the gaming theme is completely intentional 🎮.
                     </p>
                 </div>
                 <div className="pt-7 md:pt-5 lg:pt-2 text-lg w-full lg:w-80 lg:h-auto">

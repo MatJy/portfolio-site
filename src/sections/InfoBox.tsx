@@ -7,75 +7,82 @@ const InfoBox = () => {
 
             <div className="bg-[#101318] mt-6 mx-4 mb-3 rounded-sm">
                 <p className="p-2 text-lg">
-                    I'm a third-year{' '}
+                    I'm a{' '}
                     <b className="text-[#5DAEDE]">
-                        Business Information Technology student at JAMK
-                        University of Applied Sciences
+                        Bachelor of Business Information Technology
+                    </b>{' '}
+                    with a strong interest in{' '}
+                    <b className="text-[#5DAEDE]">
+                        full-stack and backend development
                     </b>
-                    , specializing in{' '}
-                    <b className="text-[#5DAEDE]">full-stack development</b>.
+                    . I enjoy building practical software solutions and solving
+                    technical challenges, whether it's designing APIs, working
+                    with databases, or integrating external services.
+                    <br />
+                    <br />
                     I'm currently{' '}
                     <b className="text-[#5DAEDE]">
-                        seeking opportunities in IT, especially in software
-                        development
+                        seeking opportunities in software development
                     </b>{' '}
-                    and I have experience with various technologies. I adapt{' '}
-                    <b className="text-[#5DAEDE]">quickly</b> to new tools and
-                    frameworks, continuously expanding my skill set. I think
-                    creativity or visuality when it comes to designing something
-                    is my biggest weakness
+                    where I can continue growing as a developer and contribute
+                    to meaningful projects. Through my studies, internship, and
+                    personal projects, I've worked with a variety of
+                    technologies and learned to adapt{' '}
+                    <b className="text-[#5DAEDE]">quickly</b> to new tools,
+                    frameworks, and development environments.
                     <br />
                     <br />
-                    While coding is my main passion, I'm also interested in
-                    exploring other areas of IT, such as sales and IT support.
                     <b className="text-[#5DAEDE]">
-                        {' '}
-                        Problem-solving is my strongest skill
+                        Problem-solving is one of my greatest strengths
                     </b>
                     , and I{' '}
-                    <b className="text-[#5DAEDE]">
-                        enjoy challenging myself
-                    </b>{' '}
-                    as much as possible to grow both personally and
-                    professionally.
+                    <b className="text-[#5DAEDE]">enjoy challenging myself</b>{' '}
+                    with new technologies and complex problems. While software
+                    development is my primary passion, I'm also interested in
+                    exploring other areas of IT and understanding how technology
+                    works as a whole.
                 </p>
+
                 <br />
+
                 <h3 className="p-2 text-2xl">
                     <b>Extra:</b>
                 </h3>
+
                 <br />
+
                 <p className="p-2 text-lg">
                     In my free time, I like to stay{' '}
-                    <b className="text-[#5DAEDE]">active</b> by going for walks
-                    and hitting the gym. I also enjoy playing{' '}
-                    <b className="text-[#5DAEDE]">video games</b>, as you might
-                    have noticed. One of my interests is also all kinds of{' '}
-                    <b className="text-[#5DAEDE]">electronic devices</b>, and I
-                    like to repair things myself if possible.
+                    <b className="text-[#5DAEDE]">active</b> by going to the gym
+                    and taking long walks. I also enjoy playing{' '}
+                    <b className="text-[#5DAEDE]">video games</b>, which
+                    probably isn't a surprise considering the theme of this
+                    portfolio. Another interest of mine is anything related to{' '}
+                    <b className="text-[#5DAEDE]">technology and electronics</b>
+                    , and I enjoy repairing devices myself whenever possible and
+                    figuring out how they work behind the scenes.
                     <br />
                     <br />
-                    When it comes to my personality, I'm a{' '}
+                    As a person, I'd describe myself as{' '}
                     <b className="text-[#5DAEDE]">positive</b>,{' '}
-                    <b className="text-[#5DAEDE]">energetic</b>, and{' '}
-                    <b className="text-[#5DAEDE]">approachable</b> person. I
-                    might not always have the best advice, but I'm always{' '}
-                    <b className="text-[#5DAEDE]">willing to listen</b>,
-                    because, in the end, that's what matters most. At work, I'm{' '}
-                    <b className="text-[#5DAEDE]">efficient</b>, a great{' '}
-                    <b className="text-[#5DAEDE]">team player</b>, and somewhat{' '}
-                    <b className="text-[#5DAEDE]">creative</b>. Most
-                    importantly, I put <b className="text-[#5DAEDE]">passion</b>{' '}
-                    into everything I do.
+                    <b className="text-[#5DAEDE]">approachable</b>, and easy to
+                    work with. I enjoy collaborating with others, learning from
+                    different perspectives, and bringing{' '}
+                    <b className="text-[#5DAEDE]">enthusiasm</b> to everything I
+                    do. At work, I'm an{' '}
+                    <b className="text-[#5DAEDE]">efficient</b>{' '}
+                    <b className="text-[#5DAEDE]">team player</b> who enjoys
+                    both learning new things and helping others when possible.
                     <br />
-                    <br />I created this site to give you a better idea of who I
-                    am, whether you're a random visitor, a potential employer,
-                    or someone I already know. My goal was to keep it{' '}
+                    <br />I created this site to showcase not only my technical
+                    skills but also a bit of my personality. My goal was to keep
+                    it{' '}
                     <b className="text-[#5DAEDE]">professional yet relaxed</b>,
-                    avoiding anything too serious or cliché. Hopefully, this
-                    site{' '}
-                    <b className="text-[#5DAEDE]">reflects my personality</b>{' '}
-                    and leaves a{' '}
-                    <b className="text-[#5DAEDE]">good impression</b>!
+                    avoiding anything overly serious while still presenting
+                    myself authentically. Hopefully, this site{' '}
+                    <b className="text-[#5DAEDE]">reflects who I am</b> both as
+                    a developer and as a person, and leaves a{' '}
+                    <b className="text-[#5DAEDE]">good impression</b>.
                 </p>
             </div>
         </section>
