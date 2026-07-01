@@ -14,15 +14,27 @@ type ProjectDescriptionEntry = Partial<Record<Language, JSX.Element>>;
 const createSimpleDescription = (
     title: string,
     description: string,
+    secondTitle?: string,
+    secondDescription?: string,
 ): ProjectDescriptionEntry => ({
     en: (
         <>
             <h2 className="text-lg font-semibold text-[#2D81B2] mb-5 mt-2">
                 {title}
             </h2>
+
             <section className="mb-6 mt-2">
                 <p>{description}</p>
             </section>
+
+            {secondTitle && secondDescription && (
+                <section className="mb-6">
+                    <h3 className="text-lg font-semibold mb-2 text-[#2D81B2]">
+                        {secondTitle}
+                    </h3>
+                    <p>{secondDescription}</p>
+                </section>
+            )}
         </>
     ),
 });
@@ -532,6 +544,12 @@ const projectDescriptions: Record<string, ProjectDescriptionEntry> = {
     book_register: createSimpleDescription(
         'Book Register Overview',
         'A simple PHP application with database integration for managing and displaying book information. This project highlights my understanding of backend development fundamentals, working with databases, and building applications that combine server-side logic with persistent data storage.',
+    ),
+    DocGen: createSimpleDescription(
+        'DocGen overview',
+        'DocGen is a full-stack AI-powered documentation generator for JavaScript and TypeScript. It uses Google Gemini to generate JSDoc, README files, inline comments, refactoring suggestions, and clear code explanations. Built with React, TypeScript, Node.js, and Express, DocGen features a Monaco-based code editor and real-time response streaming for a fast, interactive developer experience.',
+        'What I learned',
+        'Building DocGen with Codex gave me practical experience in agentic software development. I learned how to guide an AI coding agent with clear instructions, generate and refine implementation plans, and review AI-produced code critically. The project also strengthened my own code-review and debugging skills, as I needed to validate the agent’s decisions, identify issues, and ensure the final implementation met the project’s requirements.',
     ),
 };
 

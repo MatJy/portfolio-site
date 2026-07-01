@@ -109,5 +109,19 @@
             "mysql"
         ],
         "type": "full-stack"
+    },
+    {
+        "name": "DocGen",
+        "link": "",
+        "technologies": [
+            "codex",
+            "gemini",
+            "typescript",
+            "nodejs",
+            "react",
+            "vite",
+            "css"
+        ],
+        "type": "full-stack"
     }
 ]

@@ -28,6 +28,8 @@ const favorites: string[] = [
     'express',
     'aws',
     'git',
+    'codex',
+    'claude',
 ];
 
 const formatTechName = (filename: string) => {
