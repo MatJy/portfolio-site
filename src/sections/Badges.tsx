@@ -30,6 +30,7 @@ const favorites: string[] = [
     'git',
     'codex',
     'claude',
+    'postgresql',
 ];
 
 const formatTechName = (filename: string) => {

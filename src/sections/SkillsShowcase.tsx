@@ -6,6 +6,7 @@ const skills = [
     'Authentication',
     'Authorization',
     'Agentic Coding',
+    'AI Integration',
     'OAuth2',
     'JWT',
     'Database Design',
@@ -14,18 +15,15 @@ const skills = [
     'Payment Integrations',
     'Webhook Integration',
     'Transaction Management',
-    'Backend Architecture',
+    'Backend Application Design',
     'API Security',
-    'Responsive UI Development',
     'State Management',
-    'Frontend Architecture',
-    'Cloud Development',
+    'Cloud Fundamentals',
     'ORM (Sequelize)',
     'Cron Jobs',
     'GitFlow workflow',
     'Agile Development',
     'Scrum',
-    'Kanban',
 ];
 
 const SkillsShowcase = () => {
