@@ -509,10 +509,6 @@ const projectDescriptions: Record<string, ProjectDescriptionEntry> = {
         'Portfolio Site Overview',
         'A personal portfolio website built to present my projects, technical skills, and background in a clear and professional way. Developed primarily with TypeScript, it highlights my frontend development skills, attention to UI structure, and ability to create a polished web presence.',
     ),
-    WorkPulse: createSimpleDescription(
-        'WorkPulse Overview',
-        'A productivity application designed to help users structure their work sessions and maintain healthy break habits. The app allows users to create and continue work sessions while receiving break reminders, demonstrating my ability to build practical user-focused features, manage application state, and develop functionality with TypeScript.',
-    ),
     'poll-serverless': createSimpleDescription(
         'Poll Serverless Overview',
         'A serverless backend project created as a final assignment for a backend course, built using AWS serverless technologies. This project demonstrates my understanding of cloud-based architecture, backend logic, and scalable application design, as well as my ability to work with modern backend deployment models.',
@@ -545,12 +541,182 @@ const projectDescriptions: Record<string, ProjectDescriptionEntry> = {
         'Book Register Overview',
         'A simple PHP application with database integration for managing and displaying book information. This project highlights my understanding of backend development fundamentals, working with databases, and building applications that combine server-side logic with persistent data storage.',
     ),
-    DocGen: createSimpleDescription(
-        'DocGen overview',
-        'DocGen is a full-stack AI-powered documentation generator for JavaScript and TypeScript. It uses Google Gemini to generate JSDoc, README files, inline comments, refactoring suggestions, and clear code explanations. Built with React, TypeScript, Node.js, and Express, DocGen features a Monaco-based code editor and real-time response streaming for a fast, interactive developer experience.',
-        'What I learned',
-        'Building DocGen with Codex gave me practical experience in agentic software development. I learned how to guide an AI coding agent with clear instructions, generate and refine implementation plans, and review AI-produced code critically. The project also strengthened my own code-review and debugging skills, as I needed to validate the agent’s decisions, identify issues, and ensure the final implementation met the project’s requirements.',
-    ),
 };
 
 export default projectDescriptions;
+
+export const internshipPaymentCaseStudy = [
+    {
+        id: 'overview',
+        title: 'Overview',
+        paragraphs: [
+            'During my internship, I contributed to an existing business platform across backend development, database design, frontend features, and development infrastructure. My main responsibility was implementing a complete payment workflow, connecting price negotiation, transport quotes, payment collection, and transfers to participating companies.',
+            'The company was continuing development of a codebase originating from an EU-funded project. The current implementation is private, so this case study focuses on my engineering contribution. The payment workflow allowed buyers to submit bids, respond to counteroffers, compare transport quotes, and pay the agreed total through one payment flow.',
+            'I worked alongside another frontend intern and two project leads. I owned the payment-related implementation and contributed to decisions about feature scope and priorities. I also created transactional emails, background jobs, development tooling, and a Linux deployment for stakeholder review.',
+            <p key="thesis-link">
+                I also wrote my thesis about this payment process. For a deeper look at its design and implementation, you can{' '}
+                <a
+                    href="https://www.theseus.fi/server/api/core/bitstreams/239a64a3-3040-42af-849f-65a68b56d3e4/content"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#5DAEDE] underline hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5DAEDE]"
+                >
+                    read my thesis on Theseus (PDF)
+                </a>.
+            </p>,
+        ],
+    },
+    {
+        id: 'technical',
+        title: 'Technical decisions',
+        paragraphs: [
+            'The existing application uses Vue 3 and Ionic on the frontend, with a Node.js/Express backend and PostgreSQL database. I implemented the payment workflow across these layers, building REST API endpoints for bidding, orders, transport quotes, payment initialization, and company payment onboarding. The frontend calls the APIs through Axios, while Sequelize models define database relationships and support transactional updates.',
+            'I selected Stripe Connect for its available features, ease of integration, and accessible starting cost. The implementation uses separate charges and transfers, allowing the platform to collect a payment before transferring the appropriate amounts to participating companies.',
+            <div key="payment-stages" className="space-y-4">
+                <p>The payment workflow connects five stages:</p>
+                <ol className="list-decimal pl-5 space-y-4">
+                    <li><strong>Company onboarding.</strong> Sellers and participating logistics companies complete Stripe Connect onboarding. The application stores their connected account identifiers and updates their payment capabilities through Stripe webhooks.</li>
+                    <li><strong>Purchasing and bidding.</strong> Buyers can purchase at the listed price or submit a bid for a chosen quantity. Sellers can accept, reject, or counter a bid, and buyers can accept a counteroffer. Proceeding with an accepted bid creates an order using the agreed price and quantity; accepting the bid does not itself charge the buyer.</li>
+                    <li><strong>Transport quotes.</strong> Where buyers arrange transport through the platform, multiple logistics companies can submit prices. The buyer selects a quote before checkout, making the item price and transport cost visible before payment.</li>
+                    <li><strong>Payment collection.</strong> The buyer pays through Stripe’s Payment Element. The backend initializes payment using the recorded order amounts, and a verified Stripe webhook confirms successful payment and updates the database. For orders with a selected transport quote, one payment covers both the item and transport.</li>
+                    <li><strong>Recipient transfers.</strong> The application initiates transfers to the seller and, where applicable, the logistics company when the buyer confirms delivery. A scheduled process also supports automatic release after a configured post-shipment deadline. The transfers account for each recipient’s share and the platform’s commission.</li>
+                </ol>
+            </div>,
+            'I kept orders, payments, and recipient transfers in separate database records because they represent different stages of the workflow. Order and payment amounts are stored as integer minor units, such as cents. Database transactions and row locks coordinate related changes, including reserving available quantities when an order is created. Failure handling includes restoring reserved quantities if payment initialization fails.',
+            'The payment APIs use the application’s JWT authentication, with company membership, administrator, and buyer/seller checks on relevant operations. Server-side validation checks required fields, prices, quantities, and workflow state. Webhook processing verifies Stripe signatures and checks payment identifiers, amounts, currencies, and allowed status transitions before recording success. Idempotency keys help prevent repeated external requests from creating duplicate transfers or refunds.',
+            'I organized payment-related code into routes, business services, Stripe integration modules, models, email templates, and schedulers. I also revised database relationships and removed some unused tables while extending the inherited codebase. Background jobs handle reminders, stale orders, and delayed transfer release.',
+            'I created transactional email templates and tested their output with MailHog. I also worked with Finnish, English, and Swedish language files in both the frontend and backend. On the frontend, I implemented payment-related pages and made smaller responsive and UI changes, including the front-page category menu.',
+            'To support development, I created a shared Docker Compose configuration that starts the backend and supporting services together, including PostgreSQL, MailHog, object storage, and analytics services. The frontend runs separately. I also created a demo-data script that populates sample companies and offers through authenticated API calls, and deployed the application to a Linux server so the team could review progress remotely.',
+            'Testing was manual and incremental. Using Postman, the application, database records, and Stripe’s test environment, I verified company onboarding, payment initialization, successful webhook updates, and seller transfers with commission deducted. I tested email output separately with MailHog. The payment workflow was not validated with real transactions or production users.',
+        ],
+    },
+    {
+        id: 'learning',
+        title: 'Challenges & learning',
+        paragraphs: [
+            'The most significant adjustment involved choosing the correct Stripe payment model. I initially planned to use manual payouts, but discovered that controlling when funds leave a connected account for a bank account did not provide the transfer control the application needed. I changed the implementation to separate charges and transfers and revised the database structure accordingly.',
+            'Adding a logistics company as another payment recipient introduced a second design challenge. An early option was for logistics companies to invoice buyers separately at the end of the month. Through discussion, I identified that buyers should know the transport cost before committing to payment. I implemented a quote-selection stage so the buyer could accept a transport price and pay the combined total.',
+            'Working in an unfamiliar codebase taught me how to trace existing behavior before extending it. Database relationships required particular attention because the new workflow had to connect negotiation, orders, payments, and recipients without losing their separate responsibilities. I also gained experience explaining implementation progress and discussing scope with project leads.',
+            'The payment process was also the subject of my thesis, which required deeper study of Stripe Connect, webhooks, and payment workflow design. If starting again, I would validate the complete movement of funds against the provider’s payment models earlier, before committing to the database design.',
+            'I used GitHub Copilot for implementation assistance, debugging, identifying potential security issues, and smaller UI changes. I divided work into manageable tasks, reviewed generated changes, and investigated unfamiliar approaches to keep my understanding aligned with the implementation.',
+        ],
+    },
+];
+
+export const workPulseCaseStudy = [
+    {
+        id: 'overview',
+        title: 'Overview',
+        paragraphs: [
+            'WorkPulse is a web application for people who forget to take breaks while working at a computer. Users can create reusable work sessions, configure break intervals and individual break durations, and receive browser notifications when breaks start and end. A dashboard lets them manage saved sessions and view accumulated work time.',
+            'I built WorkPulse independently, mainly during summer 2025, to turn a problem I had noticed myself into a working application. I defined the features, implemented the application, configured Supabase, and deployed it to Netlify. I used ChatGPT for ideas and some implementation assistance, alongside UI elements from a library and AI-assisted styling.',
+        ],
+    },
+    {
+        id: 'technical',
+        title: 'Technical decisions',
+        paragraphs: [
+            'WorkPulse uses Next.js, React, and TypeScript, with Tailwind CSS for styling. Next.js Server Actions handle authentication and database mutations, while client components manage forms, countdowns, notifications, and dashboard updates.',
+            'I chose Supabase to provide a hosted database and authentication for an application I wanted to make publicly accessible. It allowed me to store sessions, breaks, and work logs without building and hosting a separate backend service. Supabase database functions and triggers calculate accumulated work time from the logs.',
+            'The dashboard combines an initial server-side data fetch with Supabase Realtime subscriptions. When session, break, or work-log records change, the client fetches updated data so the displayed session information stays current.',
+            'One implementation challenge was keeping session editing consistent as the number of breaks changed. The two-step editor first collects the session duration and break interval, then generates the individual break fields. When saving an edit, it updates existing breaks, inserts additional ones, and deletes those no longer needed.',
+            'The timer flow separates the overall session countdown from break scheduling. The break scheduler tracks the current break, switches between work and break states, and uses each break’s configured duration. Browser notifications announce those transitions.',
+            'I tested complete sessions manually in both the development environment and the deployed application, including runs with shorter timers. I also tested with two accounts to check that users could not see each other’s sessions. Netlify was connected to GitHub so repository updates triggered new deployments.',
+        ],
+    },
+    {
+        id: 'learning',
+        title: 'Challenges & learning',
+        paragraphs: [
+            'The hardest part was coordinating multiple breaks with different durations. During development, breaks sometimes advanced incorrectly, lasted for the wrong amount of time, or left the next break starting at an unexpected point.',
+            'The resulting implementation tracks the current break explicitly and calculates scheduled break times relative to the session start. Working on this flow gave me practical experience coordinating React state, effects, and time-based behavior across several components.',
+            'WorkPulse was also my first project using a hosted database service. I learned to connect application features to Supabase queries, authentication, database functions, and triggers. By the end, I was more comfortable using its database API and building persistent features without a separate backend application.',
+            'The project took my own idea through implementation, database integration, testing, and public deployment. It remains a completed learning project, with no planned further development.',
+        ],
+    },
+];
+
+export const docGenCaseStudy = [
+    {
+        id: 'overview',
+        title: 'Overview',
+        paragraphs: [
+            'DocGen is a personal project that helps JavaScript and TypeScript developers document and understand code. Users paste code into a browser editor and generate JSDoc, inline comments, README drafts, explanations, or refactoring suggestions. Results stream into the interface and can be copied for further editing.',
+            'I built it to explore AI API integration and agentic development with Codex in VS Code. I defined the project’s purpose, chose the main technology stack, and wrote a Markdown plan to guide development. Codex generated the implementation; my work centered on planning, discussing decisions, reviewing the generated code with AI assistance, and manually checking the application.',
+        ],
+    },
+    {
+        id: 'technical',
+        title: 'Technical decisions',
+        paragraphs: [
+            'DocGen uses a React and TypeScript frontend with a Monaco code editor, connected to an Express backend. The backend sends the submitted code to Google Gemini with instructions specific to the selected task. The application has no database or account system.',
+            'I chose React to gain more experience with it and Express because it was my most familiar backend framework. Using TypeScript on the backend extended my experience beyond my previous JavaScript backend projects. Codex suggested Gemini after we discussed using a model available without paid usage.',
+            <div key="implementation-details" className="space-y-4">
+                <p>Two implementation details are particularly relevant:</p>
+                <ul className="list-disc pl-5 space-y-4">
+                    <li>
+                        <strong>Streaming and cancellation:</strong> The backend forwards Gemini’s response through Server-Sent Events, and the frontend progressively displays the text. An AbortController supports stopping generation, while the backend passes cancellation to the provider when the client disconnects. A configurable timeout also limits generation duration.
+                    </li>
+                    <li>
+                        <strong>Testing without the AI service:</strong> The Express application receives its generation function as a dependency. Backend tests substitute simulated text streams, allowing request validation, mode selection, rate limiting, and streamed responses to be checked without calling Gemini.
+                    </li>
+                </ul>
+            </div>,
+            'Zod validates incoming requests and environment configuration. The backend keeps the API key server-side, limits input length, and applies an in-memory IP-based rate limit. The interface renders documentation as Markdown and commented source as plain code.',
+            'I manually checked the application’s behavior but did not personally run the automated tests. In my trials, generation quality was uneven. I used Gemini without paid usage to keep the experiment cost-free, and the results reinforced the need to review generated documentation before using it.',
+        ],
+    },
+    {
+        id: 'learning',
+        title: 'Challenges & learning',
+        paragraphs: [
+            'The main challenge was developing a clear understanding of code that Codex had largely produced. In earlier personal projects, familiarity with the structure grew as I implemented features. Here, I accepted most implementations without detailed review, so understanding the overall system required more deliberate reading and discussion afterward.',
+            'I read through the code, examined the architecture, and revisited the implementation with AI assistance. This helped me understand how an application sends code to an AI service and receives a streamed response. It also gave me firsthand experience of how much implementation work an agent can handle and how that changes my involvement in the development process.',
+            'For a similar project, I would spend more time understanding the generated implementation and take a more active role in defining and checking tests. I would also consider using another model for an additional review. The project left me thinking more carefully about what I need to understand and verify before accepting AI-generated work.',
+        ],
+    },
+];
+
+export const waveSpacerCaseStudy = [
+    {
+        id: 'overview',
+        title: 'Overview',
+        paragraphs: [
+            'WaveSpacer helps Spotify listeners find and remove playlist tracks they rarely play. Users connect their Spotify account, select a playlist, and review cleanup suggestions based on listening history collected by the application. A dashboard also displays recent tracks, profile information, and genre summaries.',
+            'I developed almost the entire backend and contributed substantially to the database design in a five-person course team in autumn 2025. My responsibilities included Spotify integration, authentication, listening-history collection, database queries, database design and structure, and AWS Secrets Manager integration. Other team members handled the frontend, cloud infrastructure, UI/UX, and general development support.',
+        ],
+    },
+    {
+        id: 'technical',
+        title: 'Technical decisions',
+        paragraphs: [
+            'WaveSpacer connects an Angular frontend to a Node.js and Express backend through a REST-style HTTP API. I implemented endpoints for profiles, playlists, listening history, statistics, and track removal. The frontend exchanges JSON with these endpoints, while the backend handles Spotify Web API requests and MySQL persistence.',
+            'I organized the backend into routes, controllers, services, models, and query repositories. This separated HTTP request handling, Spotify integration, and database operations so that each part had a focused responsibility. Express middleware handles JSON request parsing, cookies, authentication, and CORS configuration for requests from the frontend.',
+            'I chose MySQL because it was familiar from my studies and suited the relationships between users, songs, listening events, artists, and genres. The database uses linking tables for many-to-many relationships. I implemented SQL joins and aggregation to retrieve track details and summaries, bulk inserts to save collected data, and upserts to update existing records. Database access uses a connection pool and parameterized queries in many operations.',
+            'One substantial implementation was the listening-history collection pipeline. A cron job retrieves recent Spotify activity for registered users, checks timestamps against stored history, fetches artist and genre information, and saves the related records. Playlist cleanup combines this stored history with Spotify playlist data. The current rule suggests tracks with five or fewer recorded plays, ordered from least played. These counts reflect activity collected by WaveSpacer rather than a user’s complete Spotify history.',
+            'Authentication combines Spotify’s OAuth 2.0 authorization-code flow with JWT-based application authentication. The backend exchanges the Spotify authorization code for access and refresh tokens, then issues its own four-hour JWT in an HTTP-only cookie. Authentication middleware verifies that JWT before protected endpoints run. In production, the cookie also uses the Secure attribute.',
+            'Spotify tokens are encrypted using AES-256-GCM before database storage. The backend checks access-token expiry and uses refresh tokens to renew access, allowing scheduled listening-history collection without an active browser session.',
+            'I implemented AWS Secrets Manager integration to load production configuration before initializing the database and application. The team deployed the application using EC2, RDS, S3, and CloudFront. GitHub Actions workflows automate deployment, and PM2 manages the backend process.',
+            'I tested backend behavior manually with real Spotify accounts and database queries, checking that records changed as expected. School friends also connected their accounts to test automated collection. Request handlers include error handling and logging, although validation and error responses remain areas for improvement. The project does not include an automated backend test suite.',
+        ],
+    },
+    {
+        id: 'learning',
+        title: 'Challenges & learning',
+        paragraphs: [
+            'WaveSpacer was my first integration of this scale, and authentication was one of the most significant learning challenges. I initially explored passing the JWT through the URL before moving to a cookie-based approach. Understanding how the backend issued the cookie and how the browser returned it with authenticated requests took experimentation.',
+            'I investigated cookie behavior through browser developer tools and discussed JWT handling with teachers and more experienced developers. This helped me understand the distinction between application authentication and Spotify authorization, including why background collection needs refresh tokens independently of the user’s browser session.',
+            'Working in the same room as the frontend developer and cloud specialist made integration a daily conversation. We could resolve questions about API behavior and configuration directly, while the cloud specialist helped me build a better understanding of AWS.',
+            'I wrote the backend with occasional ChatGPT support for questions, implementation approaches, and security discussions. The backend architecture and much of the database design were my own work, supported by feedback from teachers and other developers.',
+            'Looking back, I would define a clearer boundary between the application’s listening-history logic and Spotify-specific integration. Some database decisions anticipated other music services, but the implementation remains closely tied to Spotify.',
+        ],
+    },
+    {
+        id: 'next-steps',
+        title: 'Next steps',
+        paragraphs: [
+            'I am considering adding an import flow for listening-history data that users request from Spotify. This would address a current limitation: WaveSpacer only knows the listening activity it has collected.',
+            'With a longer history, I want to explore more useful playlist-cleaning criteria, such as listening frequency over the past year, time spent listening to each track, and when a song was added to a playlist. Recently added tracks would need different treatment from songs that have remained unplayed for months.',
+        ],
+    },
+];

@@ -9,7 +9,7 @@ const InfoBox = () => {
                 <p className="p-2 text-lg">
                     I'm a{' '}
                     <b className="text-[#5DAEDE]">
-                        Bachelor of Business Information Technology
+                        BBA in Business Information Technology
                     </b>{' '}
                     with a strong interest in{' '}
                     <b className="text-[#5DAEDE]">

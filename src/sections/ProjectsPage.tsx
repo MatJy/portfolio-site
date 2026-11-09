@@ -2,28 +2,16 @@ import { Link } from 'react-router-dom';
 import useProjects from '../hooks/useProjects';
 import React from 'react';
 import ProjectStateNotice from './ProjectStateNotice';
+import TechnologyBadge from './TechnologyBadge';
 
 import githubLogo from '../assets/logos/github.png';
 
 const ProjectsPage = () => {
     const { projects, loading, error } = useProjects();
 
-    const logos: Record<string, { default: string }> = import.meta.glob(
-        '../assets/logos/*.png',
-        { eager: true },
-    );
-
     const addDefaultImg = (ev: React.SyntheticEvent) => {
         const target = ev.target as HTMLImageElement;
         target.src = 'default.jpg';
-    };
-
-    const getLogo = (tech: string) => {
-        const entries = Object.entries(logos);
-        const match = entries.find(([path]) =>
-            path.toLowerCase().includes(tech.toLowerCase()),
-        );
-        return match ? match[1].default : null;
     };
 
     const formatDate = (dateString: string | null) => {
@@ -63,8 +51,8 @@ const ProjectsPage = () => {
 
                 {!loading && error && (
                     <ProjectStateNotice
-                        title="Projects unavailable"
-                        message={error}
+                        title="GitHub projects unavailable"
+                        message={`${error}. Locally maintained case studies are still available below.`}
                         tone="error"
                     />
                 )}
@@ -77,9 +65,7 @@ const ProjectsPage = () => {
                     />
                 )}
 
-                {!loading &&
-                    !error &&
-                    projects.map((project) => (
+                {projects.map((project) => (
                         <div
                             key={project.name}
                             className="
@@ -113,6 +99,14 @@ const ProjectsPage = () => {
                                 to={`/projects/${project.name}`}
                                 className="relative w-full md:w-40 xxl:w-45 flex-shrink-0"
                             >
+                                {project.isPrivate ? (
+                                    <div className="flex min-h-28 h-full flex-col justify-center rounded-md border border-[#5DAEDE]/30 bg-[#24374a] p-4 text-white">
+                                        <span className="text-xs uppercase tracking-widest text-[#5DAEDE]">Internship</span>
+                                        <span className="mt-2 text-lg font-semibold">{project.displayName ?? project.name}</span>
+                                        <span className="mt-2 text-sm text-gray-300">Read case study →</span>
+                                    </div>
+                                ) : (
+                                    <>
                                 <img
                                     src={`/projekti_trailerit/${project.name}_kuva.png`}
                                     alt={project.name}
@@ -130,9 +124,19 @@ const ProjectsPage = () => {
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
+                                    </>
+                                )}
                             </Link>
 
                             <div className="text-white flex flex-col flex-grow">
+                                {project.isPrivate ? (
+                                    <>
+                                        <span className="text-xs font-semibold text-[#5DAEDE] mb-2 md:pr-24">Internship · Private project</span>
+                                        <Link to={`/projects/${project.name}`} className="text-xl md:text-2xl mb-2 hover:underline">
+                                            {project.displayName ?? project.name}
+                                        </Link>
+                                    </>
+                                ) : (
                                 <a
                                     href={project.github}
                                     target="_blank"
@@ -152,6 +156,7 @@ const ProjectsPage = () => {
                                         className="w-6 h-6"
                                     />
                                 </a>
+                                )}
 
                                 {project.deployLink.length > 1 && (
                                     <a
@@ -176,7 +181,7 @@ const ProjectsPage = () => {
                                 )}
 
                                 <div className="flex flex-col md:flex-row gap-3 md:gap-5 mt-2">
-                                    <div className=" gap-2 text-sm">
+                                    {project.latestCommit && <div className=" gap-2 text-sm">
                                         <p className="font-bold">
                                             Latest commit:
                                         </p>
@@ -184,24 +189,15 @@ const ProjectsPage = () => {
                                             {formatDate(project.latestCommit)}
                                         </p>
                                     </div>
+                                    }
 
                                     <div className="flex flex-col gap-1">
                                         <p className="font-bold text-sm">
                                             Technologies:
                                         </p>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap items-center gap-2">
                                             {project.technologies.map(
-                                                (tech) => {
-                                                    const logo = getLogo(tech);
-                                                    return logo ? (
-                                                        <img
-                                                            key={tech}
-                                                            src={logo}
-                                                            alt={`${tech} logo`}
-                                                            className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                                                        />
-                                                    ) : null;
-                                                },
+                                                (tech) => <TechnologyBadge key={tech} technology={tech} />,
                                             )}
                                         </div>
                                     </div>

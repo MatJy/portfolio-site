@@ -70,7 +70,7 @@ const Projects = () => {
 
             {!loading &&
                 !error &&
-                projects.slice(0, 3).map((project) => (
+                projects.filter((project) => !project.isPrivate).slice(0, 3).map((project) => (
                     <div
                         key={project.name}
                         className="bg-[#0B0B0F] mt-6 mx-3 md:mx-4 mb-4 rounded-sm p-3 relative"

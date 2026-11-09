@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { localProjects } from '../data/localProjects';
 
 export type Project = {
     name: string;
+    displayName?: string;
+    isPrivate?: boolean;
     github: string;
     languages: string[];
     latestCommit: string | null;
@@ -11,7 +14,7 @@ export type Project = {
 };
 
 const useProjects = () => {
-    const [projects, setProjects] = useState<Project[]>([]);
+    const [projects, setProjects] = useState<Project[]>(localProjects);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -25,7 +28,10 @@ const useProjects = () => {
                 }
 
                 const data: Project[] = await res.json();
-                setProjects(data);
+                setProjects([
+                    ...localProjects,
+                    ...data.filter((project) => !localProjects.some((local) => local.name === project.name)),
+                ]);
             } catch (err) {
                 console.error(err);
                 setError('Could not load projects');
